@@ -125,7 +125,7 @@ const db = new SqlWrapper(':memory:');
 
 ```javascript
 db.transaction(() => {
-  db.SQLInsert('tblUsers', { UserID: 1, Name: 'Christo' });
+  db.SQLInsert('tblUsers', { UserID: 1, Name: 'Ben' });
   db.SQLUpdate('tblUsers', { Name: 'Updated' }, { UserID: 1 });
 });
 ```
@@ -137,7 +137,7 @@ Nested calls to `transaction()` automatically use `SAVEPOINT`/`RELEASE`/`ROLLBAC
 ```javascript
 const users = db.table('tblUsers');
 
-users.insert({ UserID: 1, Name: 'Christo' });
+users.insert({ UserID: 1, Name: 'Ben' });
 users.find({ UserID: 1 });
 users.update({ Name: 'New Name' }, { UserID: 1 });
 users.delete({ UserID: 1 });
@@ -148,7 +148,7 @@ users.delete({ UserID: 1 });
 ```javascript
 db.attachGlobal();
 
-SQLInsert('tblUsers', { UserID: 1, Name: 'Christo' });
+SQLInsert('tblUsers', { UserID: 1, Name: 'Ben' });
 SQLFind('tblUsers', { UserID: 1 });
 ```
 
@@ -172,12 +172,12 @@ db.exec(`
   )
 `);
 
-db.SQLInsert('tblUsers', { UserID: 1, Name: 'Christo' });
+db.SQLInsert('tblUsers', { UserID: 1, Name: 'Ben' });
 
 const user = db.SQLFind('tblUsers', { UserID: 1 });
-console.log(user); // { UserID: 1, Name: 'Christo' }
+console.log(user); // { UserID: 1, Name: 'Ben' }
 
-db.SQLUpdate('tblUsers', { Name: 'Christo LunexCorp' }, { UserID: 1 });
+db.SQLUpdate('tblUsers', { Name: 'Ben' }, { UserID: 1 });
 db.SQLUpsert('tblUsers', { UserID: 1, Name: 'Replaced' }, 'UserID');
 
 console.log(db.SQLCount('tblUsers'));       // 1
